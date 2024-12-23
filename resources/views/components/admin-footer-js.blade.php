@@ -15,8 +15,8 @@
 <script src="https://developercodez.com/developerCorner/parsley/parsley.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $("#show_hide_password a").on('click', function (event) {
+    $(document).ready(function() {
+        $("#show_hide_password a").on('click', function(event) {
             event.preventDefault();
             if ($('#show_hide_password input').attr("type") == "text") {
                 $('#show_hide_password input').attr('type', 'password');
@@ -32,3 +32,56 @@
 </script>
 
 
+
+{{-- <script>
+    $(document).ready(function(){
+        $('#formSubmit').on('submit', function(e){
+            if($(this).parsely().validate()){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+        }
+        });
+    });
+</script> --}}
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#formSubmit').on('submit', function(e) {
+            if ($(this).parsely().validate()) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(result) {
+                        console.log(result);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: ", error); // Log any AJAX error
+                    }
+                });
+
+            }
+        });
+    });
+</script>
