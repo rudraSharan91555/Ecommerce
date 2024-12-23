@@ -33,30 +33,6 @@
 
 
 
-{{-- <script>
-    $(document).ready(function(){
-        $('#formSubmit').on('submit', function(e){
-            if($(this).parsely().validate()){
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false,
-                success: function(result) {
-                    console.log(result);
-                }
-            });
-        }
-        });
-    });
-</script> --}}
-
-
-
 <script>
     $(document).ready(function() {
         $('#formSubmit').on('submit', function(e) {
