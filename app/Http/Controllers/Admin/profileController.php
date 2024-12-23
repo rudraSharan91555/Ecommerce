@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator; // Corrected import statement
-use App\Models\User; // Import the User model
+use Illuminate\Support\Facades\Validator;
+use App\Models\User; 
+use App\Traits\ApiResponse;
 
 class profileController extends Controller
 {
+    use ApiResponse;
     /**
      * Display a listing of the resource.
      */
@@ -42,13 +44,15 @@ class profileController extends Controller
         ]);
 
         if ($validation->fails()) {
-            return response()->json(['status' => 400, 'message' => $validation->errors()->first()]);
+            return $this->error($validation->errors()->first(),400,[]);
+            // return response()->json(['status' => 400, 'message' => $validation->errors()->first()]);
         } else {
             if ($request->hasFile('image')) {
                 $image_name = time() . '.' . $request->image->extension();
                 $request->image->move(public_path('images'), $image_name);
+            }else{
+                $image_name = Auth::User()->image;
             }
-
             $user = User::updateOrCreate(
                 ['id' => Auth::user()->id],
                 [
@@ -62,7 +66,8 @@ class profileController extends Controller
                 ]
             );
 
-            return response()->json(['status' => 200, 'message' => 'Successfully updated']);
+            // return response()->json(['status' => 200, 'message' => 'Successfully updated']);
+            return $this->success([],'Successfully updated');
         }
     }
 

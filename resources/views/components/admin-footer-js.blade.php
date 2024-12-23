@@ -39,6 +39,11 @@
             if ($(this).parsely().validate()) {
                 e.preventDefault();
                 var formData = new FormData(this);
+                var html = `<button class="btn btn-primary" type="button" disabled="">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">Loading...</span></button>`;
+                var httml1 = 'Submit';
+                $('#submitButton').html(html);
                 $.ajax({
                     type: 'POST',
                     url: $(this).attr('action'),
@@ -52,10 +57,12 @@
                     success: function(result) {
                         console.log(result);
                     },
+                    $('#submitButton').html(html);
                     error: function(xhr, status, error) {
                         console.log("Error: ", error); // Log any AJAX error
                     }
                 });
+                $('#submitButton').html(html1);
 
             }
         });
