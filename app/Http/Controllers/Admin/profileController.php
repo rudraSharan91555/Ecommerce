@@ -36,8 +36,9 @@ class profileController extends Controller
         $validation = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users,email,'. Auth::id(),
+            'phone' => 'required',
             'image' => 'mimes:jpeg,png,jpg,gif|max:5120',
-            'address' => 'required|string|max:255',
+            'address' => 'string|max:255',
             'twitter_link' => 'string|max:255' ,
             'fb_link' => 'string|max:255' ,
             'insta_link' => 'string|max:255' ,
@@ -58,6 +59,7 @@ class profileController extends Controller
                 [
                     'name' => $request->name,
                     'email' => $request->email,
+                    'phone' => $request->phone,
                     'image' => $image_name ?? null, 
                     'address' => $request->address,
                     'twitter_link' => $request->twitter_link,

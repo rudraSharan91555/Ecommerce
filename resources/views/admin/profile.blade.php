@@ -159,7 +159,9 @@
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
+                                        <span id="submitButton">
                                             <button type="submit" id="submitButton" class="btn btn-primary px-4">Save Changes</button>
+                                        </span>
                                         </div>
                                     </div>
                                 </div>
