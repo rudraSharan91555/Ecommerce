@@ -22,7 +22,7 @@
 
         <li class="menu-label">UI Elements</li>
         <li>
-            <a href="{{url('admin/home_banner')}}">
+            <a href="{{url('admin/home_banners')}}">
                 <div class="parent-icon"><i class='bx bx-cookie'></i>
                 </div>
                 <div class="menu-title">Home Banner</div>

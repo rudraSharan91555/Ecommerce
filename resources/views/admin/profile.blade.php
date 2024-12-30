@@ -1,6 +1,14 @@
 @extends('admin/layout')
 @section('content')
 
+@php
+if(Auth::User()->image == null){
+    // $image = 'assets/images/avatars/avatars-2.png';
+}else{
+    // $image = Auth::User()->image;
+}   
+@endphp
+
 <!--start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">

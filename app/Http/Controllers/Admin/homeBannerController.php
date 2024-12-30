@@ -14,7 +14,7 @@ class homeBannerController extends Controller
     public function index()
     {
         $data = HomeBanner::get();
-        return view('admin/homeBanner',get_defined_vars());
+        return view('admin/HomeBanner/home_banners',get_defined_vars());
     }
 
     /**

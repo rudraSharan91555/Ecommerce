@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\Admin\AuthController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\authController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Controllers\Admin\profileController;
 use App\Http\Controllers\Admin\homeBannerController;
+
 
 
 
@@ -27,7 +29,7 @@ Route::get('/profile', [profileController::class, 'index'])->name('profile.index
 
 Route::post('/admin/saveProfile', [ProfileController::class, 'store'])->name('profile.store');
 
-Route::get('admin/home_banner',[homeBannerController::class,'index']);
+Route::get('admin/home_banners',[homeBannerController::class,'index']);
 
 Route::get('/logout', function () {
     Auth::logout();
