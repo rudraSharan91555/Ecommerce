@@ -55,8 +55,7 @@
                                 <div class="card-body">
                                     <div class="d-flex flex-column align-items-center text-center">
                                         <!-- Profile Image -->
-                                        {{-- <img src="{{ asset('assets/images/vm1_logo.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150"> --}}
-                                        <img src="{{ asset('/') }}{{ Auth::user()->image }}" id="imagePreviw"
+                                        <img src="{{ asset('images/' . Auth::user()->image) }}" id="imagePreview"
                                             alt="Admin" class="rounded-circle p-1 bg-primary" width="150"
                                             height="150">
                                         <div class="mt-3">
@@ -69,25 +68,31 @@
                                     </div>
                                     <hr class="my-4" />
                                     <ul class="list-group list-group-flush">
-                                        <li
+                                        {{-- <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                             <h6 class="mb-0"><i class="bx bx-globe me-2"></i>Website</h6>
-                                            <span class="text-secondary">https://codervent.com</span>
-                                        </li>
+                                            <span class="text-secondary"></span>
+                                        </li> --}}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                            <h6 class="mb-0"><i class="bx bx-globe me-2"></i>LinkedIn</h6>
+                                            <span class="text-secondary">
+                                                <a href="https://www.linkedin.com/in/rudra-sharan-b718b7267" target="_blank" class="text-decoration-none">LinkedIn Profile</a>
+                                            </span>
+                                        </li>                                        
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                             <h6 class="mb-0"><i class="bx bxl-twitter me-2"></i>Twitter</h6>
-                                            <span class="text-secondary">@codervent</span>
+                                            <span class="text-secondary">{{ Auth::user()->twitter_link}}</span>
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                             <h6 class="mb-0"><i class="bx bxl-instagram me-2"></i>Instagram</h6>
-                                            <span class="text-secondary">codervent</span>
+                                            <span class="text-secondary">{{ Auth::user()->insta_link}}</span>
                                         </li>
                                         <li
                                             class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                             <h6 class="mb-0"><i class="bx bxl-facebook me-2"></i>Facebook</h6>
-                                            <span class="text-secondary">codervent</span>
+                                            <span class="text-secondary">{{ Auth::user()->fb_link}}</span>
                                         </li>
                                     </ul>
                                 </div>
