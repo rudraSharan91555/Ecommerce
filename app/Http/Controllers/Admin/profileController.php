@@ -60,7 +60,7 @@ class profileController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    'image' => $image_name ?? null, 
+                    'image' => $request->image , 
                     'address' => $request->address,
                     'twitter_link' => $request->twitter_link,
                     'fb_link' => $request->fb_link,

@@ -3,9 +3,9 @@
 
 @php
 if(Auth::User()->image == null){
-    // $image = 'assets/images/avatars/avatars-2.png';
+    $image = 'Auth::user()->image;';
 }else{
-    // $image = Auth::User()->image;
+    $image = Auth::user()->image;
 }   
 @endphp
 
@@ -48,7 +48,8 @@ if(Auth::User()->image == null){
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <!-- Profile Image -->
-                                    <img src="{{ asset('assets/images/vm1_logo.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150">
+                                    {{-- <img src="{{ asset('assets/images/vm1_logo.png') }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150"> --}}
+                                    <img src="{{ asset('/')}}{{Auth::user()->image}}" id="imagePreviw" alt="Admin" class="rounded-circle p-1 bg-primary" width="150" height="150">
                                     <div class="mt-3">
                                         <h4>{{ Auth::user()->name }}</h4>
                                         <p class="text-secondary mb-1">Full Stack Developer</p>
@@ -159,7 +160,7 @@ if(Auth::User()->image == null){
                                             <h6 class="mb-0">Image</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="file" name="image" class="form-control" />
+                                            <input type="file" id="photo" name="image" class="form-control" />
                                         </div>
                                     </div>
 
