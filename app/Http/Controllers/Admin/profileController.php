@@ -68,8 +68,8 @@ class profileController extends Controller
                 ]
             );
 
-            // return response()->json(['status' => 200, 'message' => 'Successfully updated']);
-            return $this->success([],'Successfully updated');
+            // return $this->success([],'Successfully updated');
+            return redirect()->route('profile.index')->with('success', 'Profile updated successfully!');
         }
     }
 

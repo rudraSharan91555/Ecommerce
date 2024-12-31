@@ -126,6 +126,9 @@
                                                     <input type="file" class="form-control" id="enter_image"
                                                         placeholder="Enter Image" required>
                                                 </div>
+												<div>
+													<img src="" id="showImage" height="200px" width="200px">
+												</div>
                                             </div>
 											<input type="hidden" name="id" id="enter_id">
                                         </div>
@@ -145,7 +148,9 @@
 <script>
 	function saveData(id,text,link,image)
 	{
-
+		$('#enter_id').val(id);
+		$('#enter_text').val(text);
+		$('#enter_link').val(link);
 	}
 </script>
 @endsection
