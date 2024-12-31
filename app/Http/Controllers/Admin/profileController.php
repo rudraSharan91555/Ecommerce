@@ -28,9 +28,6 @@ class profileController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
 
     public function store(Request $request)
     {
@@ -48,25 +45,21 @@ class profileController extends Controller
         if ($validation->fails()) {
             return $this->error($validation->errors()->first(), 400, []);
         } else {
-            // Check if the user uploaded a new image
             if ($request->hasFile('image')) {
-                // Generate a unique name for the uploaded image
                 $image_name = time() . '.' . $request->image->extension();
-                // Move the image to the 'images' folder in the public directory
                 $request->image->move(public_path('images'), $image_name);
             } else {
-                // If no new image is uploaded, keep the current image
                 $image_name = Auth::User()->image;
             }
 
-            // Update or create the user record
+            
             $user = User::updateOrCreate(
                 ['id' => Auth::user()->id],
                 [
                     'name' => $request->name,
                     'email' => $request->email,
                     'phone' => $request->phone,
-                    'image' => $image_name, // Store the image name, not the raw image file
+                    'image' => $image_name, 
                     'address' => $request->address,
                     'twitter_link' => $request->twitter_link,
                     'fb_link' => $request->fb_link,

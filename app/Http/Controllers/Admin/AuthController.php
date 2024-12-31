@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
-use Hash;
+use Illuminate\Support\Facades\Hash;
+
+// use Hash;
 
 use Auth;
 

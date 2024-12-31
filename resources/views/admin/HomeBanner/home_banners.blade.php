@@ -121,13 +121,13 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <label for="enter_image" class="col-sm-3 col-form-label">Image</label>
+                                                <label for="photo" class="col-sm-3 col-form-label">Image</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" class="form-control" id="enter_image"
+                                                    <input type="file" class="form-control" id="photo"
                                                         placeholder="Enter Image" required>
                                                 </div>
-												<div>
-													<img src="" id="showImage" height="200px" width="200px">
+												<div id="image_key" >
+													<img src="" id="imagePreview" height="200px" width="200px">
 												</div>
                                             </div>
 											<input type="hidden" name="id" id="enter_id">
@@ -145,12 +145,18 @@
             </div>
         </div>
     </div>
+
 <script>
-	function saveData(id,text,link,image)
-	{
-		$('#enter_id').val(id);
-		$('#enter_text').val(text);
-		$('#enter_link').val(link);
-	}
+    function saveData(id, text, link, image) {
+    $('#enter_id').val(id);
+    $('#enter_text').val(text);
+    $('#enter_link').val(link);
+
+    var key_image = image === '' ? "{{URL::asset('images/upload.png')}}" : "{{URL::asset('image')}}/" + image;
+
+    var html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
+    $('#image_key').html(html);
+}
+
 </script>
 @endsection
