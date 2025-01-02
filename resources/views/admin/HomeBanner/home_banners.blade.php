@@ -89,7 +89,9 @@
                     <h5 class="modal-title" id="exampleModalLabel">Home Banner</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('updateHomeBanner') }}" method="POST" enctype="multipart/form-data">
+                {{-- <form id='#formSubmit'action="{{ url('admin.updateHomebanner') }}"  method="POST" enctype="multipart/form-data"> --}}
+                    <form id='#formSubmit' action="{{ route('admin.updateHomebanner') }}" method="POST" enctype="multipart/form-data">
+
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -139,7 +141,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <span id="#submitButton">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </span> 
                     </div>
                 </form>
             </div>

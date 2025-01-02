@@ -31,6 +31,11 @@ Route::post('/admin/saveProfile', [ProfileController::class, 'store'])->name('pr
 
 Route::get('admin/home_banners',[homeBannerController::class,'index']);
 
+
+Route::post('/admin/updateHomebanner', [homeBannerController::class, 'store'])->name('admin.updateHomebanner');
+
+
+
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('login');

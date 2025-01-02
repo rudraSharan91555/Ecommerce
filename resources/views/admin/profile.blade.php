@@ -7,6 +7,7 @@
             $image = Auth::user()->image;
         }
     @endphp
+    
 
     <!--start page wrapper -->
     <div class="page-wrapper">
