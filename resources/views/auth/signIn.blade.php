@@ -110,31 +110,4 @@
 </script>
 
 
-{{-- <script>
-    $('#formSubmit').submit(function(e) {
-        e.preventDefault(); 
-        if ($(this).parsley().validate()) { 
-            var url = "{{ url('login_user') }}"; 
-            $.ajax({
-                url: url,
-                data: $('#formSubmit').serialize(), 
-                type: 'POST',
-                success: function(result) {
-                    if (result.status == 200) {
-                        alert('Successfully logged in');
-                        window.location.href = "/"; 
-                    } else {                        
-                        alert(result.message || 'Login failed');
-                    }
-                },
-                error: function(xhr, status, error) {                   
-                    console.log('AJAX error: ' + status + error);
-                    alert('There was an error. Please try again later.');
-                }
-            });
-        }
-    });
-</script> --}}
-
-
 </html>

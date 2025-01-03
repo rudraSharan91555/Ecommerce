@@ -35,43 +35,6 @@
 
 
 
-{{-- <script>
-    $(document).ready(function() {
-        $('#formSubmit').on('submit', function(e) {
-            if ($(this).parsely().validate()) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                var html = `<button class="btn btn-primary" type="button" disabled="">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                <span class="visually-hidden">Loading...</span></button>`;
-                var httml1 = `<button type="submit" id="submitButton" class="btn btn-primary px-4">Save Changes</button>`;
-                $('#submitButton').html(html);
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: formData,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(result) {
-                        console.log(result);
-                    },
-                    $('#submitButton').html(html);
-                    error: function(xhr, status, error) {
-                        console.log("Error: ", error); // Log any AJAX error
-                    }
-                });
-                $('#submitButton').html(html1);
-
-            }
-        });
-    });
-</script> --}}
-
-
 <script>
     $(document).ready(function() {
         $('#formSubmit').on('submit', function(e) {

@@ -34,11 +34,9 @@
 
             <h6 class="mb-0 text-uppercase">Home Banner</h6>
             <hr />
-            <button type="button" 
-				onclick="saveData('0','','','')"
-				class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">Add Home Banner
-			</button>
+            <button type="button" onclick="saveData('0','','','')" class="btn btn-outline-info px-5 radius-30"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">Add Home Banner
+            </button>
             <hr />
             <div class="card">
                 <div class="card-body">
@@ -56,13 +54,14 @@
                             <tbody>
                                 @foreach ($data as $list)
                                     <tr>
-                                        <td>{{$list->id}}</td>
-										<td>{{$list->text}}</td>
-										<td>{{$list->link}}</td>
-										<td>{{$list->image}}</td>
-										<td><button type="button" onclick="saveData('{{$list->id}}','{{$list->text}}','{{$list->link}}','{{$list->image}}')"
-											class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal"
-											data-bs-target="#exampleModal">Update</button></td>
+                                        <td>{{ $list->id }}</td>
+                                        <td>{{ $list->text }}</td>
+                                        <td>{{ $list->link }}</td>
+                                        <td>{{ $list->image }}</td>
+                                        <td><button type="button"
+                                                onclick="saveData('{{ $list->id }}','{{ $list->text }}','{{ $list->link }}','{{ $list->image }}')"
+                                                class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">Update</button></td>
 
                                     </tr>
                                 @endforeach
@@ -90,7 +89,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 {{-- <form id='#formSubmit'action="{{ url('admin.updateHomebanner') }}"  method="POST" enctype="multipart/form-data"> --}}
-                    <form id='#formSubmit' action="{{ route('admin.updateHomebanner') }}" method="POST" enctype="multipart/form-data">
+                <form id='#formSubmit' action="{{ route('admin.updateHomebanner') }}" method="POST"
+                    enctype="multipart/form-data">
 
                     @csrf
                     <div class="modal-body">
@@ -128,11 +128,11 @@
                                                     <input type="file" class="form-control" id="photo"
                                                         placeholder="Enter Image" required>
                                                 </div>
-												<div id="image_key" >
-													<img src="" id="imagePreview" height="200px" width="200px">
-												</div>
+                                                <div id="image_key">
+                                                    <img src="" id="imagePreview" height="200px" width="200px">
+                                                </div>
                                             </div>
-											<input type="hidden" name="id" id="enter_id">
+                                            <input type="hidden" name="id" id="enter_id">
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <span id="#submitButton">
                             <button type="submit" class="btn btn-primary">Save changes</button>
-                        </span> 
+                        </span>
                     </div>
                 </form>
             </div>
@@ -151,30 +151,43 @@
     </div>
 
     <script>
-        document.getElementById('photo').addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-            document.getElementById('imagePreview').src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('imagePreview').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     </script>
-<script>
-    function saveData(id, text, link, image) {
-    $('#enter_id').val(id);
-    $('#enter_text').val(text);
-    $('#enter_link').val(link);
+    {{-- <script>
+        function saveData(id, text, link, image) {
+            $('#enter_id').val(id);
+            $('#enter_text').val(text);
+            $('#enter_link').val(link);
 
-    var key_image = image === '' ? "{{URL::asset('images/upload.png')}}" : "{{URL::asset('image')}}/" + image;
+            var key_image = image === '' ? "{{ URL::asset('images/upload.png') }}" : "{{ URL::asset('image') }}/" + image;
 
-    var html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
-    $('#image_key').html(html);
+            var html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
+            $('#image_key').html(html);
+
+        }
+    </script> --}}
+    <script>
+        function saveData(id, text, link, image) {
+    $('#enter_id').val(id || '');
+    $('#enter_text').val(text || '');
+    $('#enter_link').val(link || '');
     
+    const key_image = image 
+        ? `{{ URL::asset('image') }}/${image}` 
+        : "{{ URL::asset('images/upload.png') }}";
+
+    const html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
+    $('#image_key').html(html);
 }
 
-</script>
+    </script>
 @endsection
