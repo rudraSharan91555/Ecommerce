@@ -116,7 +116,9 @@ class homeBannerController extends Controller
         $banner->save();
 
         // Redirect with success message
-        return back()->with('success', 'Home Banner saved successfully!');
+        // return back()->with('success', 'successfully update!');
+        return back()->with(['success' => 'Successfully updated!', 'reload' => true]);
+
     }
 
 

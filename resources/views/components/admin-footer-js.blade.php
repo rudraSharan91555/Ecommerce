@@ -60,6 +60,9 @@
                         if(result.status == 'success'){
                             showAlert(result.status,result.message);
                             $('#submitButton').html(html1);
+                            if(result.reload != undefined){
+                                window.location.href = window.location.href;
+                            }
                         }else{
                             showAlert(result.status,result.message);
                             $('#submitButton').html(httml1);
