@@ -150,6 +150,19 @@
         </div>
     </div>
 
+    <script>
+        document.getElementById('photo').addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            document.getElementById('imagePreview').src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+    </script>
 <script>
     function saveData(id, text, link, image) {
     $('#enter_id').val(id);
@@ -160,6 +173,7 @@
 
     var html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
     $('#image_key').html(html);
+    
 }
 
 </script>
