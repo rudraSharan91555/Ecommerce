@@ -1,8 +1,8 @@
 @extends('admin/layout')
 @section('content')
     @php
-        if (Auth::User()->image == null) {
-            $image = 'Auth::user()->image;';
+        if (Auth::user()->image == null) {
+            $image = 'assets/images/avatars/avatar-2.png';
         } else {
             $image = Auth::user()->image;
         }
@@ -69,11 +69,6 @@
                                     </div>
                                     <hr class="my-4" />
                                     <ul class="list-group list-group-flush">
-                                        {{-- <li
-                                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                            <h6 class="mb-0"><i class="bx bx-globe me-2"></i>Website</h6>
-                                            <span class="text-secondary"></span>
-                                        </li> --}}
                                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                             <h6 class="mb-0"><i class="bx bx-globe me-2"></i>LinkedIn</h6>
                                             <span class="text-secondary">
@@ -105,7 +100,6 @@
                                 <form action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="card-body">
-                                        <!-- Full Name -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Full Name</h6>
@@ -115,19 +109,15 @@
                                                     value="{{ Auth::user()->name }}" required />
                                             </div>
                                         </div>
-
-                                        <!-- Email -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Email</h6>
                                             </div>
                                             <div class="col-sm-9 text-secondary">
-                                                <input type="email" class="form-control" name="email"
+                                                <input type="text" class="form-control" name="email"
                                                     value="{{ Auth::user()->email }}" required />
                                             </div>
                                         </div>
-
-                                        <!-- Phone -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Phone</h6>
@@ -138,7 +128,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- Address -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Address</h6>
@@ -148,8 +137,6 @@
                                                     value="{{ Auth::user()->address }}" required />
                                             </div>
                                         </div>
-
-                                        <!-- Social Links -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Twitter</h6>
@@ -159,7 +146,6 @@
                                                     value="{{ Auth::user()->twitter_link }}" />
                                             </div>
                                         </div>
-
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Facebook</h6>
@@ -169,7 +155,6 @@
                                                     value="{{ Auth::user()->fb_link }}" />
                                             </div>
                                         </div>
-
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Instagram</h6>
@@ -179,8 +164,6 @@
                                                     value="{{ Auth::user()->insta_link }}" />
                                             </div>
                                         </div>
-
-                                        <!-- Image -->
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <h6 class="mb-0">Image</h6>
@@ -190,14 +173,12 @@
                                                     class="form-control" />
                                             </div>
                                         </div>
-
-                                        <!-- Submit Button -->
                                         <div class="row">
                                             <div class="col-sm-3"></div>
                                             <div class="col-sm-9 text-secondary">
                                                 <span id="submitButton">
-                                                    <button type="submit" id="submitButton"
-                                                        class="btn btn-primary px-4">Save Changes</button>
+                                                    <input type="submit" id="submitButton"
+                                                        class="btn btn-primary px-4" />
                                                 </span>
                                             </div>
                                         </div>

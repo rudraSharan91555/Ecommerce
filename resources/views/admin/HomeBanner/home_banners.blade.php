@@ -61,7 +61,11 @@
                                         <td><button type="button"
                                                 onclick="saveData('{{ $list->id }}','{{ $list->text }}','{{ $list->link }}','{{ $list->image }}')"
                                                 class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">Update</button></td>
+                                                data-bs-target="#exampleModal">Update</button>
+                                            {{-- <button onclick="deletData('{{$list->id}}','home_banners')" class="btn btn-outline-danger px-5 radius-30" >Delet</button> --}}
+                                            <button onclick="deleteData('{{ $list->id }}', 'home_banners')"
+                                                class="btn btn-outline-danger px-5 radius-30">Delete</button>
+                                        </td>
 
                                     </tr>
                                 @endforeach
@@ -177,17 +181,18 @@
     </script> --}}
     <script>
         function saveData(id, text, link, image) {
-    $('#enter_id').val(id || '');
-    $('#enter_text').val(text || '');
-    $('#enter_link').val(link || '');
-    
-    const key_image = image 
-        ? `{{ URL::asset('image') }}/${image}` 
-        : "{{ URL::asset('images/upload.png') }}";
+            $('#enter_id').val(id || '');
+            $('#enter_text').val(text || '');
+            $('#enter_link').val(link || '');
 
-    const html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
-    $('#image_key').html(html);
-}
+            const key_image = image ?
+                `{{ URL::asset('image') }}/${image}` :
+                "{{ URL::asset('images/upload.png') }}";
 
+            const html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
+            $('#image_key').html(html);
+        }
     </script>
+
+
 @endsection

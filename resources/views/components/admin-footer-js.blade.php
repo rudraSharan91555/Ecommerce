@@ -1,7 +1,7 @@
 <!-- Bootstrap JS -->
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <!--plugins-->
-{{-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script> --}}
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
@@ -60,7 +60,7 @@
                         if(result.status == 'success'){
                             showAlert(result.status,result.message);
                             $('#submitButton').html(html1);
-                            if(result.reload != undefined){
+                            if(result.data.reload != undefined){
                                 window.location.href = window.location.href;
                             }
                         }else{
@@ -72,7 +72,7 @@
                     {
                         showAlert(result.responseJSON.status,result.responseJSON.message);
                         $('#submitButton').html(httml1);
-                        // console.log(result);
+                        
                     }
                     
                 });
@@ -81,7 +81,32 @@
             }
         });
     });
+	function deleteData(id, table) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                fetch(`/deletData/${id}/${table}`, {
+                        method: 'DELETE', 
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        },
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === true) {
+                            alert(data.message);
+                            location.reload(); 
+                        } else {
+                            alert(data.message); 
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Something went wrong. Please try again.");
+                    });
+            }
+        }
 </script>
+
 <script>
     $(document).ready(function() {
         $('#example').DataTable();
@@ -98,3 +123,29 @@
             .appendTo( '#example2_wrapper .col-md-6:eq(0)' );
     } );
 </script>
+
+{{-- New function add --}}
+{{-- <script>
+	$(document).ready(() => {
+		$("#photo").change(function() {
+			const file = this.files[0];
+			if (file) {
+				let reader = new FileReader();
+				reader.onload = function(event) {
+					$("#imgPreview")
+						.attr("src", event.target.result);
+				};
+				reader.readAsDataURL(file);
+			}
+		});
+	});
+</script>
+<script>
+	function showAlert(status, message) {
+		SnackBar({
+			status: status,
+			message: message,
+			position: "br"
+		});
+	}
+</script> --}}

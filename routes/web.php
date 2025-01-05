@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\homeBannerController;
 
 
 
+
 Route::middleware([AdminAuth::class])->group(function() {
     Route::get('/', function () {
         return view('admin/index');
@@ -34,10 +35,13 @@ Route::get('admin/home_banners',[homeBannerController::class,'index']);
 
 Route::post('/admin/updateHomebanner', [homeBannerController::class, 'store'])->name('admin.updateHomebanner');
 
+// Delet fuunction
+
+Route::delete('/deletData/{id}/{table}', [HomeBannerController::class, 'deletData']);
+
 
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('login');
 });
-
