@@ -26,7 +26,7 @@ class authController extends Controller
             // Right Auth
             if(Auth::attempt($cred)) {
                 if(Auth::User()->hasrole('admin')){
-                return response()->json(['status' => 200, 'message' => "Admin User"]);                    
+                return response()->json(['status' => 200, 'message' => "Admin User",'url'=>'admin/dashboard']);                    
                 }else{
                     return response()->json(["status"=> 200, "message"=> "Non User"]);
                 }

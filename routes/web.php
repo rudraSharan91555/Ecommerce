@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\auth\authController as AuthAuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-
-Route::get('/', function () {
-    return view('admin/index');
-});
+// Route::get('/', function () {
+//     return view('admin/index');
+// });
 
 Route::get('/login', function () {
     return view('auth/signIn');
@@ -15,4 +15,7 @@ Route::get('/login', function () {
 
 Route::post('/login_user',[AuthAuthController::class,'loginUser']);
 
-// Route::get('/createAdmin',[AuthController::class,'createCustomer']);
+Route::get('/logout',function (){
+    Auth::logout();
+    return redirect('/login') ;
+});

@@ -95,7 +95,8 @@
                     type: 'post',
                     success: function(result) {
                         if (result.status == 200) {
-                            alert('Succesfully submit');
+                            // alert('Succesfully submit');/
+                            window.location.href = result.url
                         }else{
                             alert('Wrong Credentials')
                         }
