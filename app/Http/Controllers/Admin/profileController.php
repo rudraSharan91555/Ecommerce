@@ -7,9 +7,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Traits\ApiResponse;
 
 class profileController extends Controller
 {
+    use ApiResponse;
     /**
      * Display a listing of the resource.
      */
@@ -45,8 +47,8 @@ class profileController extends Controller
         ]);
    
         if($validation->fails()){
-            // return $this->error($validation->errors()->first(),400,[]);
-            return response()->json(['status'=>400,'message'=>$validation->errors()->first()]);
+            return $this->error($validation->errors()->first(),400,[]);
+            // return response()->json(['status'=>400,'message'=>$validation->errors()->first()]);
         }else{
             if($request->hasFile('image')){
                 $image_name = 'images/'.$request->name.time().'.'.$request->image->extension();
@@ -61,8 +63,8 @@ class profileController extends Controller
                 ,'twitter_link'=>$request->twitter_link, 'insta_link'=>$request->insta_link
                 ,'fb_link'=>$request->fb_link]
             );
-            return response()->json(['status'=>200,'message'=>'Successfully updated']);
-            // return $this->success([],'Successfully updated');
+            // return response()->json(['status'=>200,'message'=>'Successfully updated']);
+            return $this->success([],'Successfully updated');
         }
     }
 
