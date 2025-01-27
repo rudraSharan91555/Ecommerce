@@ -8,3 +8,4 @@ Route::get('/dashboard', function () {
 });  
 
 Route::get('/profile',[profileController::class,'index']);
+Route::post('/saveProfile',[profileController::class,'store']);
