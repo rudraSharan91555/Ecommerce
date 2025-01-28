@@ -9,6 +9,9 @@
 	<link href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{asset('assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+	<link href="{{('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{asset('assets/css/pace.min.css')}}" rel="stylesheet" />
 	<script src="{{asset('assets/js/pace.min.js')}}"></script>
@@ -24,5 +27,6 @@
 	<link rel="stylesheet" href="{{asset('assets/css/header-colors.css')}}" />
 	<link rel="stylesheet" href="https://developercodez.com/developerCorner/parsley/parsley.css" >
 	<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+	
 	<title>Ecommerce</title>
 </head>
