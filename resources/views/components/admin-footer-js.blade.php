@@ -55,7 +55,11 @@
                         }else{
                             $('#submitButton').html(html1);
                         }
-                    }
+                    },
+                    error:function(result) {
+						showAlert(result.responseJSON.status, result.responseJSON.message);
+						$('#submitButton').html(html1);
+					}
                 });
                 
             }
