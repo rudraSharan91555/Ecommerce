@@ -87,7 +87,30 @@ class HomeBannerController extends Controller
 
 public function deletData($id = '', $table = '')
 {
-    
+    // Validate inputs
+    if (empty($id) || empty($table)) {
+        return response()->json(['status' => false, 'message' => 'Invalid ID or table name'], 400);
+    }
+
+    try {
+        // Check if the table name is allowed (whitelist approach)
+        $allowedTables = ['home_banners']; // Add allowed table names here
+        if (!in_array($table, $allowedTables)) {
+            return response()->json(['status' => false, 'message' => 'Table not allowed'], 400);
+        }
+
+        // Delete the record
+        $deleted = DB::table($table)->where('id', $id)->delete();
+        if ($deleted) {
+            return response()->json(['status' => true, 'message' => 'Successfully Deleted'], 200);
+        } else {
+            return response()->json(['status' => false, 'message' => 'Record not found'], 404);
+        }
+    } catch (\Exception $e) {
+        // Log the error for debugging
+        // \Log::error('Delete error: ' . $e->getMessage());
+        return response()->json(['status' => false, 'message' => 'Failed to delete item'], 500);
+    }
 }
 
     /**
