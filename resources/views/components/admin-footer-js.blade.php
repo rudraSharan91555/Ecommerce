@@ -55,6 +55,9 @@
                     success: function(result) {
                         if (result.status == 'success') {
                             $('#submitButton').html(html1);
+                            if(result.data.status,result.message){
+                                window.location.href = window.location.href;
+                            }
                         } else {
                             $('#submitButton').html(html1);
                         }
@@ -69,6 +72,51 @@
             }
         }));
     });
+
+    function deleteData(id, table) {
+		let text = "Are you sure want to delete";
+		if (confirm(text) == true) {
+			$.ajax({
+				type: 'GET',
+				url: "{{url('admin/deleteData')}}/" + id + "/" + table + "",
+				data: '',
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(result) {
+					if (result.status == 'success') {
+						showAlert(result.status, result.message);
+
+						if (result.data.reload != undefined) {
+							window.location.href = window.location.href;
+						}
+					} else {
+						showAlert(result.status, result.message);
+
+						$('#submitButton').html(html1);
+					}
+				},
+				error: function(result) {
+					showAlert(result.responseJSON.status, result.responseJSON.message);
+					$('#submitButton').html(html1);
+				}
+
+
+			});
+		} else {
+
+		}
+
+	}
+</script>
+<script>
+	function showAlert(status, message) {
+		SnackBar({
+			status: status,
+			message: message,
+			position: "br"
+		});
+	}
 </script>
 <script>
     $(document).ready(function() {

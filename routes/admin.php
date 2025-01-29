@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\dashboardController;
 use App\Http\Controllers\Admin\homeBannerController;
 use App\Http\Controllers\Admin\profileController;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +16,7 @@ Route::post('/saveProfile',[profileController::class,'store']);
 // Home Banner
 Route::get('/home_banner',[homeBannerController::class,'index']);
 // Route::post('/updateHomeBanner',[homeBannerController::class,'store']);
-Route::post('/admin/updateHomebanner', [homeBannerController::class, 'store'])->name('admin.updateHomebanner');
+Route::post('/updateHomeBanner', [homeBannerController::class, 'store'])->name('admin.updateHomeBanner');
 
-// Delet fuunction
-
-Route::delete('/deletData/{id}/{table}', [HomeBannerController::class, 'deletData']);
+// Delete Data
+Route::get('/deleteData/{id?}/{table?}',[dashboardController::class,'deleteData']);
