@@ -14,3 +14,5 @@ Route::post('/saveProfile',[profileController::class,'store']);
 
 // Home Banner
 Route::get('/home_banner',[homeBannerController::class,'index']);
+// Route::post('/updateHomeBanner',[homeBannerController::class,'store']);
+Route::post('/updateHomeBanner', [homeBannerController::class, 'store'])->name('admin.updateHomeBanner');
