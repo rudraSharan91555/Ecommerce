@@ -92,6 +92,8 @@
                     <h5 class="modal-title" id="exampleModalLabel">Home Banner</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                {{-- <form id='#formSubmit' action="{{ route('admin/updateHomebanner') }}" method="POST" --}}
+                    {{-- enctype="multipart/form-data"> --}}
                     <form id='#formSubmit' action="{{ route('admin.updateHomeBanner') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
@@ -162,7 +164,7 @@
         });
     </script>
     
-    <script>
+    {{-- <script>
         function saveData(id, text, link, image) {
             $('#enter_id').val(id || '');
             $('#enter_text').val(text || '');
@@ -173,6 +175,24 @@
                 "{{ URL::asset('images/upload.png') }}/" + image+'';
 
             const html = `<img src="${key_image}" id="imagePreview" height="200px" width="200px">`;
+            $('#image_key').html(html);
+        }
+    </script> --}}
+    <script>
+        function saveData(id,text,link,image)
+        {
+            $('#enter_id').val(id);
+            $('#enter_text').val(text);
+            $('#enter_link').val(link);
+    
+            if(image == ''){
+                var key_image = "{{URL::asset('images/upload.png')}}";
+                $('#photo').prop('required',true);
+            }else{
+                var key_image = image;
+                $('#photo').prop('required',false);
+            }
+            var html = '	<img src="'+key_image+'"   id="imgPreview" height="200px" width="200px">';
             $('#image_key').html(html);
         }
     </script>

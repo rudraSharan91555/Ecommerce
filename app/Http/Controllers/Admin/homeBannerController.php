@@ -64,10 +64,12 @@ class HomeBannerController extends Controller
             // Upload new image
             $imageName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images/'), $imageName);
-            $banner->image = $imageName;
+            // $banner->image = $imageName;
+            $banner->image = 'storage/images/' . $imageName;
+
         } elseif (!$banner->exists) {
             // Set default image if creating a new banner without an image
-            $banner->image = 'default.png'; 
+            $banner->image = 'default.png'; // Ensure 'default.png' exists in 'public/images/'
         }
 
         // Update other fields
@@ -81,14 +83,11 @@ class HomeBannerController extends Controller
         return back()->with(['success' => 'Successfully updated!', 'reload' => true]);
     }
 
-    
 
 
 
-public function deletData($id = '', $table = '')
-{
 
-}
+    public function deletData($id = '', $table = '') {}
 
     /**
      * Display the specified resource.
