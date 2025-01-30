@@ -30,5 +30,11 @@ Route::post('/updatecolor', [colorController::class, 'store']);
 
 
 
+Route::get('/attribute_name',[attributeController::class,'index_attribute_name']);
+Route::post('/update_attribute_name',[attributeController::class,'store_attribute_name']);
+
+Route::get('/attribute_value',[attributeController::class,'index_attribute_value']);
+Route::post('/update_attribute_value',[attributeController::class,'store_attribute_value']);
+
 // Delete Data
 Route::get('/deleteData/{id?}/{table?}',[dashboardController::class,'deleteData']);

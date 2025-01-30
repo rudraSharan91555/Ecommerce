@@ -57,8 +57,10 @@
             <ul>
                 <li> <a href="{{url('admin/attribute_name')}}"><i class="bx bx-right-arrow-alt"></i>Attribute Name</a>
                 </li>
-                
-                
+
+                <li> <a href="{{url('admin/attribute_value')}}"><i class="bx bx-right-arrow-alt"></i>Attribute Value</a>
+                </li>
+                              
             </ul>
         </li>
 
