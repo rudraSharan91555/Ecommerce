@@ -102,7 +102,7 @@
                                 <select class="form-control" name="attributes_id" id="attribute_id">
                                     @foreach($attribute as $list1)
                                     <option value="{{$list1->id}}">{{$list1->name}}({{$list1->slug}})</option>
-                                    @endforeach
+                                    @endforeach 
                                 </select>
                             </div>
                         </div>

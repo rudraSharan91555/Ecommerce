@@ -63,7 +63,7 @@ class attributeController extends Controller
            'value'    => 'required|string|max:255',
            'id'    => 'required',
        ]);
-
+    
        if ($validation->fails()) {
            return $this->error($validation->errors()->first(), 400, []);
            // return response()->json(['status'=>400,'message'=>$validation->errors()->first()]);
