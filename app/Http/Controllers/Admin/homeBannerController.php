@@ -65,18 +65,6 @@ class HomeBannerController extends Controller
      */
     public function destroy($id)
     {
-        $banner = HomeBanner::find($id);
-
-        if (!$banner) {
-            return back()->with('error', 'Banner not found.');
-        }
-
-        if ($banner->image) {
-            Storage::delete('public/images/' . $banner->image);
-        }
-
-        $banner->delete();
-
-        return back()->with('success', 'Banner deleted successfully.');
+        
     }
 }

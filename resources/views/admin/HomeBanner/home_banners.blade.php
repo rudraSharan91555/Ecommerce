@@ -31,9 +31,8 @@
                                 <td>
                                     <img src="{{ asset('storage/images/'.$list->image) }}" width="100px" height="100px">
                                 </td>
-                                <td>
-                                    <button type="button" onclick="saveData('{{ $list->id }}','{{ $list->text }}','{{ $list->link }}','{{ $list->image }}')" class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
-                                    <button onclick="deleteData('{{ $list->id }}')" class="btn btn-outline-danger px-5 radius-30">Delete</button>
+                                <td><button type="button" onclick="saveData('{{$list->id}}','{{$list->text}}','{{$list->link}}','{{$list->image}}')" class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+                                    <button onclick="deleteData('{{$list->id}}','home_banners')" class="btn btn-outline-danger px-5 radius-30">Delete</button>
                                 </td>
                             </tr>
                             @endforeach
