@@ -17,8 +17,6 @@ class Category extends Model
         'parent_category_id'
         
     ];
-
-    
     
     // public function products()
     // {
@@ -26,17 +24,17 @@ class Category extends Model
     // }
 
 
-    // public function subcategories()
-    // {
-    //      return $this->hasMany(Category::class,'parent_category_id','id');
-    // }
+    public function subcategories()
+    {
+         return $this->hasMany(Category::class,'parent_category_id','id');
+    }
 
 
-    //    protected function Image(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn ($value) => URL::to(''.$value.'')
-    //     );
-    // }
+       protected function Image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => URL::to(''.$value.'')
+        );
+    }
    
 }
