@@ -131,7 +131,7 @@
                                 <input type="file" name="image" class="form-control" id="photo" placeholder="Email Address" required>
                             </div>
                             <div id="image_key">
-                                <img src="" id="imgPreview" height="200px" width="200px">
+                                <img src="" id="imagePreview" height="200px" width="200px">
                             </div>
                         </div>
 
@@ -149,11 +149,20 @@
         </div>
     </div>
 </div>
-{{-- <script>
+<script>
+    document.getElementById('photo').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('imagePreview').src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
     var checkId = 0 ;
     function saveData(id, name, slug, image , parent_category_id) {
        if(checkId !=0){
-        // showing previous value
         $('#parent_category_id option[value="'+checkId+'"] ').show(); 
        }
         checkId = id;
@@ -163,43 +172,14 @@
         $('#parent_category_id').val(parent_category_id);
         $('#parent_category_id option[value="'+id+'"] ').hide();
     
-        if (image == '') {
-            var key_image = "{{URL::asset('images/upload.png')}}";
-            $('#photo').prop('required', true);
-        } else {
-            var key_image = image;
-            $('#photo').prop('required', false);
-        }
-        var html = '	<img src="' + key_image + '"   id="imgPreview" height="200px" width="200px">';
-        $('#image_key').html(html);
+       const imagePath = image ? "{{ asset('storage/images') }}/" + image : "{{ asset('images/upload.png') }}";
+        $('#image_key').html(`<img src="${imagePath}" id="imagePreview" height="200px" width="200px">`);
 
 
   
      
     }
-</script> --}}
-
-<script>
-    var checkId = 0;
-function saveData(id, name, slug, image, parent_category_id) {
-    if (checkId != 0) {
-        // Show previous value
-        $('#parent_category_id option[value="' + checkId + '"]').show();
-    }
-    checkId = id;
-    $('#enter_id').val(id);
-    $('#enter_name').val(name);
-    $('#enter_slug').val(slug);
-    $('#parent_category_id').val(parent_category_id);
-    $('#parent_category_id option[value="' + id + '"]').hide();
-
-    // Correcting image path
-    var key_image = image ? "{{ asset('images') }}/" + image : "{{ asset('images/upload.png') }}";
-
-    // Display image
-    $('#image_key').html('<img src="' + key_image + '" id="imgPreview" height="200px" width="200px">');
-}
-
 </script>
+
 
 @endsection

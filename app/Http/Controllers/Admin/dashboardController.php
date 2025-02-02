@@ -18,7 +18,13 @@ class dashboardController extends Controller
 
     public function deleteData($id='' ,$table = '')
     {
-        DB::table(''.$table.'')->where('id',$id)->delete();
-        return $this->success(['reload'=>true],'Successfully deleted');
+        // DB::table(''.$table.'')->where('id',$id)->delete();
+        // return $this->success(['reload'=>true],'Successfully deleted');
+        DB::table($table)->where('id', $id)->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully deleted',
+            'reload' => true,
+        ]);
     }
 }
