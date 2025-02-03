@@ -52,6 +52,7 @@
                             <tr>
                                 <td>1</td>
                                 <td>{{$list->text}}</td>
+
                                 <td>{{$list->created_at}}</td>
                                 <td>{{$list->updated_at}}</td>
                                 <td><button type="button" onclick="saveData('{{$list->id}}','{{$list->text}}')" class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>

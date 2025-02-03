@@ -97,7 +97,7 @@
                         </div>
                         <hr>
                         <div class="row mb-3">
-                            <label for="enter_text" class="col-sm-3 col-form-label">Attribute Name</label>
+                            <label  class="col-sm-3 col-form-label">Attribute Name</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="attributes_id" id="attribute_id">
                                     @foreach($attribute as $list1)
@@ -107,7 +107,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="enter_text" class="col-sm-3 col-form-label">Attribute Value</label>
+                            <label  class="col-sm-3 col-form-label">Attribute Value</label>
                             <div class="col-sm-9">
                                 <input type="text" name="value" class="form-control" id="attribute_value" placeholder="Enter Your Name" required>
                             </div>
