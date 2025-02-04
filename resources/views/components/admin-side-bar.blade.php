@@ -80,6 +80,15 @@
 			</ul>
 		</li>
 
+        <li class="menu-label">Brand</li>
+		<li>
+			<a href="{{url('admin/brands')}}">
+				<div class="parent-icon"><i class='bx bx-cookie'></i>
+				</div>
+				<div class="menu-title">Brands</div>
+			</a>
+		</li>
+
         <li class="menu-label">Pages</li>
         <li>
             <a href="{{url('admin/profile')}}">
