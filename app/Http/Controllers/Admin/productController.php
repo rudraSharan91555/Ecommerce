@@ -208,15 +208,15 @@ class productController extends Controller
             }
         } catch (\Throwable $th) {
             //throw $th;
-            DB::rollBack(); // if error occurs rollback all database queries
+            DB::rollBack(); 
             echo $th;
         }
     }
 
     public function clean($string) {
-        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+        $string = str_replace(' ', '-', $string); 
      
-        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); 
      }
 
 

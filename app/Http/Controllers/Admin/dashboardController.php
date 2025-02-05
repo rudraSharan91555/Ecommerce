@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
- use App\Traits\ApiResponse;
+use Illuminate\Support\Facades\DB;
+ use App\Traits\ApiResponse;  
 
 class dashboardController extends Controller
 {
