@@ -199,7 +199,8 @@
 															</select>
 														</div>
 														<div class="col-sm-3">
-															<input type="text" name="sku[]" class="form-control" value="{{$productAttr['sku']}}" id="inputEmailAddress2" placeholder="Enter SKU">
+															{{-- <input type="text" name="sku[]" class="form-control" value="{{$productAttr['sku']}}" id="inputEmailAddress2" placeholder="Enter SKU"> --}}
+															<input type="text" name="sku[]" class="form-control"  id="inputEmailAddress2" placeholder="Enter SKU">
 														</div>
 														<div class="col-sm-3">
 															<input type="text" name="mrp[]" class="form-control" value="{{$productAttr['mrp']}}" id="inputEmailAddress2" placeholder="Enter MRP">

@@ -56,7 +56,7 @@ class HomeBannerController extends Controller
         $banner->text = $request->text;
         $banner->link = $request->link;
         $banner->save();
-
+ 
         return back()->with(['success' => 'Successfully updated!', 'reload' => true]);
     }
 

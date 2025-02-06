@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <h6 class="mb-0 text-uppercase">ADD Attribute</h6>
+        <h6 class="mb-0 text-uppercase">ADDl Attribute</h6>
         <hr />
         <div class="col">
             <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="saveData('0','','')" class="btn btn-outline-info px-5 radius-30">Add ADD Attribute</button>

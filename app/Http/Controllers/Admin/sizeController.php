@@ -20,23 +20,29 @@ class sizeController extends Controller
     }
 
     public function store(Request $request)
-    {
+{
+    $validation = Validator::make($request->all(), [
+        'text' => 'required|string|max:255',
+        'id'   => 'nullable|integer',
+    ]);
 
-        $validation = Validator::make($request->all(), [
-            'text'    => 'required|string|max:255',
-            'id'    => 'required',
-        ]);
-
-        if ($validation->fails()) {
-            return $this->error($validation->errors()->first(), 400, []);
-            // return response()->json(['status'=>400,'message'=>$validation->errors()->first()]);
-        } else {
-           
-            Size::updateOrCreate(
-                ['id' => $request->id],
-                ['text' => $request->text, ]
-            );
-            return $this->success(['reload' => true], 'Successfully updated');
-        }
+    if ($validation->fails()) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $validation->errors()->first()
+        ], 400);
     }
+
+    Size::updateOrCreate(
+        ['id' => $request->id],
+        ['text' => $request->text]
+    );
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Successfully updated',
+        'reload' => true
+    ]);
+}
+
 }

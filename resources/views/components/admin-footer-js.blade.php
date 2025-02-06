@@ -59,45 +59,49 @@
 </script>
 
 <script>
-	$(document).ready(function(f) {
-		$('#formSubmit').on('submit', (function(e) {
-			if ($(this).parsley().validate()) {
-				e.preventDefault();
-				var formData = new FormData(this);
-				var html = '<button class="btn btn-primary" type="button" disabled=""> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</button>';
-				var html1 = '<input type="submit" id="submitButton" class="btn btn-primary px-4"  />';
-				$('#submitButton').html(html);
-				$.ajax({
-					type: 'POST',
-					url: $(this).attr('action'),
-					data: formData,
-					cache: false,
-					contentType: false,
-					processData: false,
-					success: function(result) {
-						if (result.status == 'success') {
-							showAlert(result.status, result.message);
-							$('#submitButton').html(html1);
-							if (result.data.reload != undefined) {
-								window.location.href = window.location.href;
-							}
-						} else {
-							showAlert(result.status, result.message);
+	$(document).ready(function () {
+    $('#formSubmit').on('submit', function (e) {
+        if ($(this).parsley().validate()) {
+            e.preventDefault();
 
-							$('#submitButton').html(html1);
-						}
-					},
-					error: function(result) {
-						showAlert(result.responseJSON.status, result.responseJSON.message);
-						$('#submitButton').html(html1);
-					}
+            var formData = new FormData(this);
+            var loadingHtml = '<button class="btn btn-primary" type="button" disabled=""><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...</button>';
+            var submitHtml = '<button type="submit" class="btn btn-primary">Save changes</button>';
+            
+            $('#submitButton').html(loadingHtml);
+
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result.status === 'success') {
+                        alert(result.message); // Use alert instead of showAlert
+                        $('#submitButton').html(submitHtml);
+                        
+                        // **Close Modal & Reload Page**
+                        $('#exampleModal').modal('hide');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        alert(result.message);
+                        $('#submitButton').html(submitHtml);
+                    }
+                },
+                error: function (xhr) {
+                    alert('Error: ' + xhr.responseJSON.message);
+                    $('#submitButton').html(submitHtml);
+                }
+            });
+        }
+    });
+});
 
 
-				});
-
-			}
-		}));
-	});
 
 	function deleteData(id, table) {
 		let text = "Are you sure want to delete";
@@ -137,13 +141,16 @@
 </script>
 
 <script>
-	function showAlert(status, message) {
-		SnackBar({
-			status: status,
-			message: message,
-			position: "br"
-		});
-	}
+	
+	function showAlert(type, message) {
+    var alertBox = '<div class="alert alert-' + (type === "success" ? "success" : "danger") + ' alert-dismissible fade show" role="alert">' +
+                   message +
+                   '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    $('.page-content').prepend(alertBox);
+    setTimeout(function() {
+        $(".alert").alert('close');
+    }, 3000);
+}
 </script>
 <script>
 	$(document).ready(() => {
