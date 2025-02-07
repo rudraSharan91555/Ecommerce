@@ -34,6 +34,7 @@
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="saveData('0','','','')" class="btn btn-outline-info px-5 radius-30"> ADD Category</button>
             <hr/>
         </div>
+        
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -58,7 +59,8 @@
                                 <td>{{$list->created_at}}</td>
                                 <td>{{$list->updated_at}}</td>
                                 <td><button type="button" onclick="saveData('{{$list->id}}','{{$list->name}}','{{$list->slug}}','{{$list->image}}','{{$list->parent_category_id}}')" class="btn btn-outline-info px-5 radius-30" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
-                                    <button onclick="deleteData('{{$list->id}}','attributes')" class="btn btn-outline-danger px-5 radius-30">Delete</button>
+                                    <button onclick="deleteData('{{$list->id}}','categories')" class="btn btn-outline-danger px-5 radius-30">Delete</button>
+
                                 </td>
 
 

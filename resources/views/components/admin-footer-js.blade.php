@@ -59,13 +59,53 @@
 </script>
 
 <script>
-	$(document).ready(function () {
-    $('#formSubmit').on('submit', function (e) {
+// 	$(document).ready(function() {
+//     $('#formSubmit').on('submit', function(e) {
+//         if ($(this).parsley().validate()) {
+//             e.preventDefault();
+//             var formData = new FormData(this);
+//             var loadingHtml = '<button class="btn btn-primary" type="button" disabled=""> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</button>';
+//             var submitHtml = '<button type="submit" class="btn btn-primary">Save changes</button>';
+            
+//             $('#submitButton').html(loadingHtml);
+
+//             $.ajax({
+//                 type: 'POST',
+//                 url: $(this).attr('action'),
+//                 data: formData,
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 success: function(result) {
+//                     if (result.status === 'success') {
+//                         showAlert(result.status, result.message);
+//                         $('#submitButton').html(submitHtml);
+                        
+                        
+//                         $('#exampleModal').modal('hide'); // Modal close
+//                         setTimeout(function() {
+//                             location.reload(); 
+//                         }, 1000);
+//                     } else {
+//                         showAlert(result.status, result.message);
+//                         $('#submitButton').html(submitHtml);
+//                     }
+//                 },
+//                 error: function(result) {
+//                     showAlert('error', result.responseJSON.message);
+//                     $('#submitButton').html(submitHtml);
+//                 }
+//             });
+//         }
+//     });
+// });
+
+$(document).ready(function() {
+    $('#formSubmit').on('submit', function(e) {
         if ($(this).parsley().validate()) {
             e.preventDefault();
-
             var formData = new FormData(this);
-            var loadingHtml = '<button class="btn btn-primary" type="button" disabled=""><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...</button>';
+            var loadingHtml = '<button class="btn btn-primary" type="button" disabled=""> <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</button>';
             var submitHtml = '<button type="submit" class="btn btn-primary">Save changes</button>';
             
             $('#submitButton').html(loadingHtml);
@@ -77,31 +117,32 @@
                 cache: false,
                 contentType: false,
                 processData: false,
-                success: function (result) {
+                dataType: 'json',  
+                success: function(result) {
+                    console.log("Response:", result); 
+
                     if (result.status === 'success') {
-                        alert(result.message); // Use alert instead of showAlert
-                        $('#submitButton').html(submitHtml);
+                        showAlert(result.status, result.message);
                         
-                        // **Close Modal & Reload Page**
-                        $('#exampleModal').modal('hide');
-                        setTimeout(function () {
-                            location.reload();
+                        setTimeout(function() {
+                            $('#exampleModal').modal('hide'); 
+                            if (result.reload) { 
+                                window.location.reload(true); 
+                            }
                         }, 1000);
                     } else {
-                        alert(result.message);
+                        showAlert(result.status, result.message);
                         $('#submitButton').html(submitHtml);
                     }
                 },
-                error: function (xhr) {
-                    alert('Error: ' + xhr.responseJSON.message);
+                error: function(result) {
+                    showAlert('error', result.responseJSON.message);
                     $('#submitButton').html(submitHtml);
                 }
             });
         }
     });
 });
-
-
 
 	function deleteData(id, table) {
 		let text = "Are you sure want to delete";
@@ -138,6 +179,7 @@
 		}
 
 	}
+	
 </script>
 
 <script>

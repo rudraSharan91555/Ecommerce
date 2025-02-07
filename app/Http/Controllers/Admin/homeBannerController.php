@@ -44,7 +44,7 @@ class HomeBannerController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            if ($banner->image) {
+            if ($banner->image) { 
                 Storage::delete('public/images/' . $banner->image);
             }
 

@@ -15,7 +15,7 @@ class taxController extends Controller
     public function index()
     {
         $data = Tax::get();
-        return view('admin/Tax/tax', get_defined_vars());
+        return view('admin/Tax/tax', compact('data'));
     }
 
     public function store(Request $request)

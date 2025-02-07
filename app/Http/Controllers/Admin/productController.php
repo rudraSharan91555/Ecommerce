@@ -93,13 +93,12 @@ class productController extends Controller
     public function store(Request $request)
     {
         try {
-            DB::beginTransaction(); //make this block observable and process start
+            DB::beginTransaction(); 
             // prx($request->all());
             $validation = Validator::make($request->all(), [
                 'name'    => 'required|string|max:255',
                 'slug'    => 'required|string|max:255',
-                'image'   => 'mimes:jpeg,png,webp,jpg,gif|max:5120', //max 5 MB
-                // 'id'    => 'required',
+                'image'   => 'mimes:jpeg,png,webp,jpg,gif|max:5120', 
                 'category_id'  => 'required|exists:categories,id',
 
             ]);
@@ -162,10 +161,11 @@ class productController extends Controller
                         [
                             'product_id' => $productId, 'color_id' => $request->color_id[$key],
                             'size_id' => $request->size_id[$key], 'sku' => $request->sku[$key],
-                            'size_id' => $request->size_id[$key], 'mrp' => $request->mrp[$key], 'price' => $request->price[$key], 'length' => $request->length[$key],
+                            'size_id' => $request->size_id[$key], 'mrp' => $request->mrp[$key],
+                            'price' => $request->price[$key], 'length' => $request->length[$key],
                             'breadth' => $request->breadth[$key],  'height' => $request->height[$key],
                             'weight' => $request->weight[$key]
-                        ]
+                        ]  
                     );
                     $productAttrId = $productAttrId->id;
                     
@@ -193,11 +193,10 @@ class productController extends Controller
 
                         
                     
-                    // array_push($productAttrNewId, $productAttrId);
-                    // Product Attr Images
+                   
                 }
                 $attrImage = [];
-                // prx($request->all());
+                
                
 
                
@@ -207,7 +206,7 @@ class productController extends Controller
                 // return $this->success(['reload' => true], 'Successfully updated');
             }
         } catch (\Throwable $th) {
-            //throw $th;
+           
             DB::rollBack(); 
             echo $th;
         }
